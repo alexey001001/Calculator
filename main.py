@@ -4,7 +4,10 @@ def calc(operand1, operand2, operator):
     elif operator == '-':
         return f'{operand1} - {operand2} = {operand1 - operand2}'
     elif operator == '/':
-        return f'{operand1} / {operand2} = {operand1 / operand2}'
+        try:
+            return f'{operand1} / {operand2} = {operand1 / operand2}'
+        except ZeroDivisionError:
+            return "Division by zero!"
 
 def getResult():
     while True:
@@ -16,7 +19,7 @@ def getResult():
 
     while True:
         try:
-            operand2 = int(input("The second operand?"))
+            operand2 = int(input("The second operand? [int]"))
             break
         except ValueError:
             print("Need to enter a int number!")
@@ -39,6 +42,7 @@ def init():
         if i == ("y" or "yes"):
             continue
         elif i == "n":
+            print("Goodbye!")
             break
 
 init()
